@@ -1,1 +1,2 @@
-<bs-book-list></bs-book-list>
+<bs-book-list *ngIf="listOn" (showDetailsEvent)="showDetails($event)"></bs-book-list>
+<bs-book-details *ngIf="detailsOn" [book]="book" (showListEvent)="showList()"></bs-book-details>
