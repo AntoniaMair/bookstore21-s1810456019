@@ -10,10 +10,7 @@ const routes: Routes = [
     {path:'home', component: HomeComponent},
     {path:'books', component: BookListComponent},
     {path:'books/:isbn', component:BookDetailsComponent},
-
-
-
-]
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
