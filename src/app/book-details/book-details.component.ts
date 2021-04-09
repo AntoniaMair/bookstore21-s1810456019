@@ -15,6 +15,7 @@ export class BookDetailsComponent implements OnInit {
 
   ngOnInit() {
     const params = this.route.snapshot.params;
+    //übergabe an getSingle um dieses Buch zur erhalten
     this.book = this.bs.getSingle(params['isbn']);
   }
 

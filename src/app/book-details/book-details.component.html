@@ -41,4 +41,5 @@
   </div>
 </div>
 
-<button (click)="showBookList()" class="ui red button">Zurück zur Buchliste</button>
+<button [routerLink]="'/books'" class="ui red button">Zurück zur Buchliste</button>
+<!--wieder dynamischer Routerlink: wir übergeben etwas dynamisches (besagen eckige Klammern) hier könnte man auch etwas zusammenbauen: string + dynamischer content, hier etwas verwirrend. Hier geben wir den hardgecodeden Routerlink zu books zurück sollte eigentlich auch funktionieren mit normalem routerlink und ".." (einmal zurück in der jetzigen url)-->
