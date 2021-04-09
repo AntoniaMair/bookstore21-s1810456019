@@ -11,5 +11,4 @@ export class BookListItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-
 }
