@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { debounceTime, distinctUntilChanged, filter, tap, switchMap } from 'rxjs/operators';
 import { Book } from '../shared/book';
 import { BookStoreService } from '../shared/book-store.service';
@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
   keyup = new EventEmitter<string>();
   isLoading=false;
   foundBooks: Book[] = [];
+  @Output() bookSelected = new EventEmitter<Book>();
 
   constructor(private bs:BookStoreService){}
 
