@@ -9,9 +9,10 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookStoreService } from './shared/book-store.service';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from "./app-routing.module";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
-  imports: [BrowserModule, FormsModule,AppRoutingModule],
+  imports: [BrowserModule, FormsModule,AppRoutingModule, HttpClientModule],
   declarations: [AppComponent, BookListComponent, BookListItemComponent, BookDetailsComponent, HomeComponent],
   bootstrap: [AppComponent],
   providers: [BookStoreService]
