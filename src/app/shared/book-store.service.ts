@@ -5,7 +5,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { Author, Book, Image } from './book';
 @Injectable()
 export class BookStoreService {
-  private api = "https://bookstore21.s1810456019.student.kwmhgb.at/api/";
+  private api = "https://bookstore21.s1810456019.student.kwmhgb.at/api";
   constructor(private http:HttpClient) { 
   }
   getAll():Observable<Array<Book>>{
@@ -16,7 +16,14 @@ export class BookStoreService {
     return this.http.get<Book>(`${this.api}/book/${isbn}`).
       pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
+
+  remove(isbn:String):Observable<any>{
+     return this.http.delete<Book>(`${this.api}/book/${isbn}`).
+      pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   private errorHandler(error:Error | any){
     return throwError(error);
   }
+
 }
