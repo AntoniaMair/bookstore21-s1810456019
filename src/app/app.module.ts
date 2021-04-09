@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule,AppRoutingModule],
   declarations: [AppComponent, BookListComponent, BookListItemComponent, BookDetailsComponent, HomeComponent],
   bootstrap: [AppComponent],
   providers: [BookStoreService]
