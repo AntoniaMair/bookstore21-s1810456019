@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Book } from '../shared/book';
 import { BookFactory } from '../shared/book-factory';
 import { BookStoreService } from '../shared/book-store.service';
 import { BookFormErrorMessages } from './book-form-error-messages';
@@ -69,6 +70,11 @@ export class BookFormComponent implements OnInit {
 
   submitForm(){
     console.log(this.bookForm.value);
+    //Filters null-values
+    this.bookForm.value.images = this.bookForm.value.images.filter((thumbnail) => thumbnail.url);
+    const book:Book = BookFactory.fromObject(this.bookForm.value);
+    console.log(book);
+
   }
 
   buildThumbnailsArray(){
