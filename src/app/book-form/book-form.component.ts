@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookFactory } from '../shared/book-factory';
 import { BookStoreService } from '../shared/book-store.service';
+import { BookFormErrorMessages } from './book-form-error-messages';
 
 @Component({
   selector: 'bs-book-form',
@@ -38,7 +39,17 @@ export class BookFormComponent implements OnInit {
     });
   }
 
-  
+  updateErrorMessages(){
+    this.errors = {};
+    for(const message of BookFormErrorMessages){
+      const control = this.bookForm.get(message.forControl)
+      if(control && control.dirty && control.invalid && control.errors[message.forValidator] && !this.errors[message.forControl]){
+        this.errors[message.forControl] = message.text;
+      }
+    }
+  }
+
+
 
 
 }
