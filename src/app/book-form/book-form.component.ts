@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookFactory } from '../shared/book-factory';
 import { BookStoreService } from '../shared/book-store.service';
@@ -36,13 +36,22 @@ export class BookFormComponent implements OnInit {
   initBook(){
     //Wir bauen das Formular Modell
     //Links der Wert des Form controls, rechts was wir zuweisen wollen
+    this.buildThumbnailsArray();
     this.bookForm = this.fb.group({
-      title: [this.book.title, Validators.required]
+      id: this.book.id,
+      title: [this.book.title, Validators.required],
+      subtitle: this.book.subtitle,
+      isbn: [this.book.isbn, [Validators.required, 
+      Validators.minLength(10), 
+      Validators.maxLength(13)]],
+      description: this.book.description,
+      rating: [this.book.rating, [Validators.min(0), Validators.max(10)]],
+      published: this.book.published,
+      images: this.images
     });
     this.bookForm.statusChanges.subscribe(() =>{
       this.updateErrorMessages();
-    }
-    );
+    });
   }
 
   updateErrorMessages(){
@@ -55,11 +64,24 @@ export class BookFormComponent implements OnInit {
     }
   }
   addThumbnailControl(){
-
+    this.images.push(this.fb.group({url:null, title:null}));
   }
 
   submitForm(){
+    console.log(this.bookForm.value);
+  }
 
+  buildThumbnailsArray(){
+    this.images = this.fb.array([]);
+    for(let img of this.book.images){
+      let fg = this.fb.group({
+        //Formcontrol bauen ohne Formbuilder
+        id:new FormControl(img.id),
+        url: new FormControl(img.url, [Validators.required]),
+        title: new FormControl(img.title, [Validators.required]),
+      });
+      this.images.push(fg);
+    }
   }
 
 
