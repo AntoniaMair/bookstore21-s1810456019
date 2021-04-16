@@ -72,8 +72,16 @@ export class BookFormComponent implements OnInit {
     console.log(this.bookForm.value);
     //Filters null-values
     this.bookForm.value.images = this.bookForm.value.images.filter((thumbnail) => thumbnail.url);
-    const book:Book = BookFactory.fromObject(this.bookForm.value);
-    console.log(book);
+    const updatedbook:Book = BookFactory.fromObject(this.bookForm.value);
+    console.log(updatedbook);
+    //just a hack, did not care about the authors
+    updatedbook.authors = this.book.authors;
+
+    if(this.isUpdatingBook){
+      this.bs.update(updatedbook).subscribe(res => {
+        this.router.navigate(["../../books",updatedbook.isbn], {relativeTo:this.route});
+      });
+    }
 
   }
 
