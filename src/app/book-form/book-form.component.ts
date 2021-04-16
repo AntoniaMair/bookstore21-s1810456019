@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookFactory } from '../shared/book-factory';
 import { BookStoreService } from '../shared/book-store.service';
@@ -16,6 +16,8 @@ export class BookFormComponent implements OnInit {
   book = BookFactory.empty();
   isUpdatingBook = false;
   errors: {[key:string]:string}={};
+  images: FormArray;
+
 
   constructor(private fb:FormBuilder, private bs:BookStoreService, private route:ActivatedRoute, private router: Router) { }
 
@@ -51,6 +53,13 @@ export class BookFormComponent implements OnInit {
         this.errors[message.forControl] = message.text;
       }
     }
+  }
+  addThumbnailControl(){
+
+  }
+
+  submitForm(){
+
   }
 
 
