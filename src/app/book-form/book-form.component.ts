@@ -37,6 +37,10 @@ export class BookFormComponent implements OnInit {
     this.bookForm = this.fb.group({
       title: [this.book.title, Validators.required]
     });
+    this.bookForm.statusChanges.subscribe(() =>{
+      this.updateErrorMessages();
+    }
+    );
   }
 
   updateErrorMessages(){
