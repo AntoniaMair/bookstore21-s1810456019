@@ -1,8 +1,8 @@
 <div class="ui-container">
   <h1>Home</h1>
   <p>Das ist der KWM Bookstore</p>
-  <a routerLink="../books" class="ui red button">
-    Buchliste ansehen</a>
+  <a routerLink="../books" class="ui red button">Buchliste ansehen</a>
 
-    <bs-search class="column"></bs-search>
+  <bs-search class="column" (bookSelected)="bookSelected($event)"></bs-search>
+
 </div>
