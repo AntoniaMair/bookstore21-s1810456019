@@ -14,6 +14,7 @@ export class BookFormComponent implements OnInit {
   bookForm: FormGroup;
   book = BookFactory.empty();
   isUpdatingBook = false;
+  errors: {[key:string]:string}={};
 
   constructor(private fb:FormBuilder, private bs:BookStoreService, private route:ActivatedRoute, private router: Router) { }
 
@@ -36,5 +37,8 @@ export class BookFormComponent implements OnInit {
       title: [this.book.title, Validators.required]
     });
   }
+
+  
+
 
 }

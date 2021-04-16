@@ -4,6 +4,7 @@
   <div class="field">
     <label>Buchtitel</label>
     <input formControlName="title">
+    <div *ngIf="errors.title" class="ui negative message">{{errors.title}}</div>
   </div>
 
 </form>
