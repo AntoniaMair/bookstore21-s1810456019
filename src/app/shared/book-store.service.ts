@@ -29,6 +29,20 @@ export class BookStoreService {
     .pipe(catchError(this.errorHandler));
   }
 
+  create(book:Book):Observable<any>{
+     return this.http
+     .post<Book>(`${this.api}/book`, book)
+     .pipe(retry(3))
+     .pipe(catchError(this.errorHandler));
+  }
+
+   update(book:Book):Observable<any>{
+     return this.http
+     .put<Book>(`${this.api}/book/${book.isbn}`, book)
+     .pipe(retry(3))
+     .pipe(catchError(this.errorHandler));
+  }
+
   private errorHandler(error:Error | any){
     return throwError(error);
   }
