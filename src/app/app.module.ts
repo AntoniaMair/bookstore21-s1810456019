@@ -14,11 +14,13 @@ import { SearchComponent } from './search/search.component';
 import { BookFormComponent } from './book-form/book-form.component';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from './shared/authentication.service';
+import { TokenInterceptorService } from './shared/token-interceptor.service';
+import { JwtInterceptorService } from './shared/jwt.interceptor.service';
 
 @NgModule({
   imports: [BrowserModule, ReactiveFormsModule,AppRoutingModule, HttpClientModule],
   declarations: [AppComponent, BookListComponent, BookListItemComponent, BookDetailsComponent, HomeComponent, SearchComponent, BookFormComponent, LoginComponent],
   bootstrap: [AppComponent],
-  providers: [BookStoreService, AuthenticationService]
+  providers: [BookStoreService, AuthenticationService, TokenInterceptorService, JwtInterceptorService]
 })
 export class AppModule {}
