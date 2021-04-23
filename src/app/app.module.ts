@@ -12,11 +12,13 @@ import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { SearchComponent } from './search/search.component';
 import { BookFormComponent } from './book-form/book-form.component';
+import { LoginComponent } from './login/login.component';
+import { AuthenticationService } from './shared/authentication.service';
 
 @NgModule({
   imports: [BrowserModule, ReactiveFormsModule,AppRoutingModule, HttpClientModule],
-  declarations: [AppComponent, BookListComponent, BookListItemComponent, BookDetailsComponent, HomeComponent, SearchComponent, BookFormComponent],
+  declarations: [AppComponent, BookListComponent, BookListItemComponent, BookDetailsComponent, HomeComponent, SearchComponent, BookFormComponent, LoginComponent],
   bootstrap: [AppComponent],
-  providers: [BookStoreService]
+  providers: [BookStoreService, AuthenticationService]
 })
 export class AppModule {}
