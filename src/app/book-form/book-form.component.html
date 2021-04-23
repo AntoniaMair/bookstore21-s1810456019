@@ -47,5 +47,11 @@
   </div>
   <div *ngIf="errors.images" class="ui negative message">{{ errors.images }}</div>
 </div>
+
+<!--<select class="custom-select" formControlName="cityName">
+   <option value="" disabled>Choose your city</option>
+   <option *ngFor="let c of city" [ngValue]="c.value">{{c.city}}</option>
+</select>-->
+
 <button type="submit" class="ui button" [disabled]="bookForm.invalid">Speichern</button>
 </form>
