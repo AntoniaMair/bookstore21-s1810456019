@@ -18,12 +18,13 @@ import { TokenInterceptorService } from './shared/token-interceptor.service';
 import { JwtInterceptorService } from './shared/jwt.interceptor.service';
 import { registerLocaleData } from "@angular/common";
 import localeDe from '@angular/common/locales/de';
+import { IsbnPipe } from './shared/isbn.pipe';
 
 registerLocaleData(localeDe);
 
 @NgModule({
   imports: [BrowserModule, ReactiveFormsModule,AppRoutingModule, HttpClientModule],
-  declarations: [AppComponent, BookListComponent, BookListItemComponent, BookDetailsComponent, HomeComponent, SearchComponent, BookFormComponent, LoginComponent],
+  declarations: [AppComponent, BookListComponent, BookListItemComponent, BookDetailsComponent, HomeComponent, SearchComponent, BookFormComponent, LoginComponent, IsbnPipe],
   bootstrap: [AppComponent],
   providers: [BookStoreService, AuthenticationService, TokenInterceptorService, JwtInterceptorService,{
     provide: HTTP_INTERCEPTORS,
