@@ -23,6 +23,7 @@ export class AuthenticationService {
     })
   }
 
+  //session storage wäre hier besser - weil localstorage seesion überdauert
   public setLocalStorage(token:string){
     localStorage.setItem("token", token);
     const decodedToken = jwt_decode(token) as Token;
