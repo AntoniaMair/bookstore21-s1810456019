@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { LOCALE_ID, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { ReactiveFormsModule } from "@angular/forms";
 
@@ -16,6 +16,10 @@ import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from './shared/authentication.service';
 import { TokenInterceptorService } from './shared/token-interceptor.service';
 import { JwtInterceptorService } from './shared/jwt.interceptor.service';
+import { registerLocaleData } from "@angular/common";
+import localeDe from '@angular/common/locales/de';
+
+registerLocaleData(localeDe);
 
 @NgModule({
   imports: [BrowserModule, ReactiveFormsModule,AppRoutingModule, HttpClientModule],
@@ -30,6 +34,9 @@ import { JwtInterceptorService } from './shared/jwt.interceptor.service';
    provide: HTTP_INTERCEPTORS,
     useClass: JwtInterceptorService,
     multi: true 
+  },
+  {
+    provide: LOCALE_ID, useValue: 'de'
   }]
 })
 export class AppModule {}
